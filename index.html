@@ -5,474 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>THE Travel Hub | 2026 Pilgrimage Packages</title><meta content="THE Travel Hub pilgrimage packages for Rwanda and Uganda, and Italy, Bosnia and Croatia in 2026. View itineraries, estimated prices and booking information." name="description"/>
-<style>
- .booking-notice{
-    margin:18px 0;
-    padding:15px;
-    background:#fff8e6;
-    border-left:4px solid #e6a700;
-    border-radius:8px;
-    color:#5c4713;
-    font-size:0.92rem;
-    line-height:1.6;
-}
-
-.booking-notice strong{
-    color:#3f310d;
-}   
-:root{
-    --primary:#00b2ca;
-    --secondary:#2c3e50;
-    --light:#f8f9fa;
-    --white:#ffffff;
-    --burgundy:#7a1f33;
-    --navy:#173f6d;
-    --shadow:0 10px 30px rgba(0,0,0,0.12);
-}
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:Arial, sans-serif;
-    background:var(--light);
-    color:#333;
-    line-height:1.6;
-}
-
-h1,h2,h3,h4{
-    font-family:"Times New Roman", serif;
-}
-
-.container{
-    width:min(1200px,92%);
-    margin:auto;
-}
-
-/* HEADER */
-
-header{
-    background:#ffffff;
-    position:sticky;
-    top:0;
-    z-index:1000;
-    box-shadow:0 2px 10px rgba(0,0,0,.08);
-    transition:box-shadow 0.3s ease;
-}
-
-header.header-scrolled{
-    box-shadow:0 4px 18px rgba(0,0,0,.14);
-}
-
-.header-inner{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    min-height:126px;
-    padding:8px 0;
-    gap:20px;
-    flex-wrap:wrap;
-    transition:
-        min-height 0.3s ease,
-        padding 0.3s ease;
-}
-
-.logo{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    flex-shrink:0;
-    text-decoration:none;
-    line-height:0;
-}
-
-.logo-image{
-    display:block;
-    width:auto;
-    height:110px;
-    max-width:230px;
-    object-fit:contain;
-    transition:
-        height 0.3s ease,
-        max-width 0.3s ease,
-        transform 0.3s ease,
-        opacity 0.3s ease;
-}
-
-.logo:hover .logo-image{
-    transform:scale(1.03);
-    opacity:0.92;
-}
-
-.logo:focus-visible{
-    outline:3px solid rgba(0,178,202,0.4);
-    outline-offset:5px;
-    border-radius:8px;
-}
-
-/* Smaller header after scrolling */
-
-header.header-scrolled .header-inner{
-    min-height:78px;
-    padding:4px 0;
-}
-
-header.header-scrolled .logo-image{
-    height:64px;
-    max-width:150px;
-}
-
-.contact-bar{
-    display:flex;
-    gap:20px;
-    flex-wrap:wrap;
-}
-
-.contact-bar a{
-    text-decoration:none;
-    color:var(--secondary);
-    font-weight:600;
-    transition:.3s;
-}
-
-.contact-bar a:hover{
-    color:var(--primary);
-}
-
-/* HERO */
-
-.hero{
-    min-height:90vh;
-    background:
-    linear-gradient(rgba(44,62,80,.5),rgba(44,62,80,.6)),
-    url("https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1600&auto=format&fit=crop");
-    background-size:cover;
-    background-position:center;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    color:white;
-    padding:80px 20px;
-}
-
-.hero-content{
-    max-width:1000px;
-}
-
-.hero h1{
-    font-size:clamp(2.5rem,6vw,4.5rem);
-    margin-bottom:15px;
-}
-
-.hero p{
-    font-size:1.15rem;
-    margin-bottom:50px;
-}
-
-/* SIGNPOST */
-
-.signpost-wrapper{
-    display:flex;
-    justify-content:center;
-}
-
-.signpost{
-    position:relative;
-    width:320px;
-    padding-top:50px;
-}
-
-.signpost::after{
-    content:"";
-    position:absolute;
-    width:24px;
-    height:270px;
-    background:#7a5a35;
-    left:50%;
-    transform:translateX(-50%);
-    top:20px;
-    border-radius:10px;
-}
-
-.plank{
-    position:relative;
-    z-index:2;
-    display:block;
-    width:100%;
-    border:none;
-    margin:25px 0;
-    color:white;
-    font-weight:bold;
-    font-size:1rem;
-    padding:18px 20px;
-    cursor:pointer;
-    border-radius:8px;
-    box-shadow:var(--shadow);
-    transition:.35s;
-}
-
-.plank:hover{
-    transform:translateY(-4px) scale(1.02);
-}
-
-.plank.rwanda{
-    background:var(--burgundy);
-}
-
-.plank.italy{
-    background:var(--navy);
-}
-
-/* PACKAGES */
-
-.section-title{
-    text-align:center;
-    padding:70px 10px 20px;
-    color:var(--secondary);
-}
-
-.packages{
-    padding-bottom:80px;
-}
-
-.package-card{
-    background:white;
-    border-radius:20px;
-    box-shadow:var(--shadow);
-    margin:35px 0;
-    overflow:hidden;
-}
-
-.package-header{
-    background:var(--secondary);
-    color:white;
-    padding:30px;
-}
-
-.package-header h2{
-    margin-bottom:10px;
-}
-
-.price-banner{
-    background:var(--primary);
-    color:white;
-    padding:15px 30px;
-    font-weight:bold;
-}
-
-.package-body{
-    display:grid;
-    grid-template-columns:1.4fr .9fr;
-}
-
-.details{
-    padding:30px;
-}
-
-.details ul{
-    padding-left:18px;
-}
-
-.details li{
-    margin-bottom:10px;
-}
-
-.booking-box{
-    background:#fafafa;
-    border-left:1px solid #eee;
-    padding:30px;
-}
-
-/* ACCORDION */
-
-.accordion{
-    margin-top:25px;
-}
-
-.accordion-item{
-    margin-bottom:10px;
-}
-
-.accordion-btn{
-    width:100%;
-    background:var(--secondary);
-    color:white;
-    border:none;
-    padding:14px;
-    text-align:left;
-    cursor:pointer;
-    border-radius:8px;
-}
-
-.accordion-content{
-    display:none;
-    padding:15px;
-    border:1px solid #ddd;
-    border-top:none;
-    background:white;
-}
-
-.accordion-content ul{
-    padding-left:18px;
-}
-
-/* FORM */
-
-.form-group{
-    margin-bottom:15px;
-}
-
-.form-group label{
-    display:block;
-    margin-bottom:6px;
-    font-weight:bold;
-}
-
-.form-control{
-    width:100%;
-    padding:12px;
-    border:1px solid #ccc;
-    border-radius:8px;
-}
-
-.pay-btn{
-    width:100%;
-    background:var(--primary);
-    border:none;
-    color:white;
-    padding:14px;
-    border-radius:10px;
-    cursor:pointer;
-    font-weight:bold;
-    transition:.3s;
-}
-
-.pay-btn:hover{
-    background:#008fa2;
-}
-.pay-btn:disabled{
-    background:#8aabb0;
-    cursor:not-allowed;
-    opacity:.8;
-}
-
-.notice{
-    margin-top:15px;
-    font-size:.95rem;
-}
-
-.success-box{
-    margin-top:15px;
-    background:#ecfff4;
-    border-left:5px solid #2ecc71;
-    padding:15px;
-    border-radius:8px;
-    display:none;
-}
-
-/* FOOTER */
-.destination-highlights{
-    margin-top:30px;
-}
-
-.place-card{
-    background:#f8f9fa;
-    border-left:4px solid #00b2ca;
-    padding:18px;
-    margin-bottom:15px;
-    border-radius:10px;
-    transition:.3s;
-}
-
-.place-card:hover{
-    transform:translateY(-3px);
-    box-shadow:0 8px 20px rgba(0,0,0,.08);
-}
-
-.place-card h4{
-    color:#2c3e50;
-    margin-bottom:8px;
-}
-footer{
-    background:var(--secondary);
-    color:white;
-    text-align:center;
-    padding:30px;
-}
-
-/* MOBILE */
-
-@media(max-width:900px){
-
-    .package-body{
-        grid-template-columns:1fr;
-    }
-
-    .booking-box{
-        border-left:none;
-        border-top:1px solid #eee;
-    }
-
-    .header-inner{
-        justify-content:center;
-        text-align:center;
-        min-height:auto;
-        padding:8px 0 12px;
-    }
-
-    .logo-image{
-        height:90px;
-        max-width:190px;
-    }
-
-    header.header-scrolled .header-inner{
-        min-height:auto;
-        padding:4px 0 7px;
-    }
-
-    header.header-scrolled .logo-image{
-        height:55px;
-        max-width:130px;
-    }
-
-    .contact-bar{
-        justify-content:center;
-    }
-
-    .hero{
-        min-height:auto;
-        padding:100px 20px;
-    }
-
-}
-
-
-/* WIX-READY ENQUIRY AND INFORMATION SECTIONS */
-.package-card{scroll-margin-top:95px;}
-textarea.form-control{resize:vertical;min-height:110px;font-family:Arial,sans-serif;}
-.privacy-note{margin-top:14px;color:#5d6872;font-size:.84rem;line-height:1.55;}
-.site-information{padding:65px 0;background:#eef3f5;}
-.site-information h2{text-align:center;color:var(--secondary);margin-bottom:28px;font-size:2rem;}
-.information-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;}
-.information-card{background:#fff;padding:22px;border-radius:12px;border-top:4px solid var(--primary);box-shadow:0 5px 18px rgba(44,62,80,.08);}
-.information-card h3{color:var(--secondary);margin-bottom:10px;font-size:1.25rem;}
-.information-card p{color:#4a5560;font-size:.94rem;line-height:1.65;}
-.information-card a{color:#087e8c;font-weight:700;text-decoration:none;}
-.information-card a:hover{text-decoration:underline;}
-.footer-note{margin-top:7px;font-size:.86rem;}
-footer a{color:#fff;}
-@media(max-width:900px){.information-grid{grid-template-columns:1fr 1fr;}}
-@media(max-width:600px){.information-grid{grid-template-columns:1fr;}.contact-bar{flex-direction:column;align-items:center;gap:6px}.signpost{width:min(320px,92vw)}.package-header,.price-banner,.details,.booking-box{padding-left:20px;padding-right:20px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
-</style>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body id="top">
 <header>
@@ -504,8 +37,147 @@ ITALY, BOSNIA &amp; CROATIA
 </div>
 </div>
 </section>
+
+<!-- =========================================
+     FEATURED PILGRIMAGE CARDS
+========================================== -->
+<section class="featured-pilgrimages" aria-labelledby="featured-title">
+    <div class="container">
+        <div class="featured-heading">
+            <span class="featured-eyebrow">Faith journeys for 2026</span>
+
+            <h2 id="featured-title">Featured Pilgrimages</h2>
+
+            <p>
+                Explore Catholic pilgrimage experiences across Africa
+                and Europe, with carefully planned itineraries,
+                accommodation and guided visits.
+            </p>
+        </div>
+
+        <div class="pilgrimage-card-grid">
+
+            <!-- Rwanda and Uganda pilgrimage card -->
+            <article class="pilgrimage-summary-card">
+                <div class="pilgrimage-summary-image">
+                    <img
+                        src="images/Sanctuary of Our Lady of Kibeho.jpg"
+                        alt="Sanctuary of Our Lady of Kibeho"
+                        loading="lazy"
+                    >
+
+                    <span class="pilgrimage-card-badge">
+                        Rwanda and Uganda
+                    </span>
+                </div>
+
+                <div class="pilgrimage-summary-content">
+                    <p class="pilgrimage-destination">
+                        Kibeho, Kampala and Namugongo
+                    </p>
+
+                    <h3>Faith of Africa Pilgrimage</h3>
+
+                    <p class="pilgrimage-dates">
+                        24 - 29 November 2026
+                    </p>
+
+                    <p class="pilgrimage-summary-description">
+                        Visit the Sanctuary of Our Lady of Kibeho,
+                        Namugongo Martyrs Shrine, Munyonyo Martyrs
+                        Shrine and Rubaga Cathedral.
+                    </p>
+
+                    <ul class="pilgrimage-summary-highlights">
+                        <li>6-day pilgrimage journey</li>
+                        <li>Led by Fr Mlungisi Mabe</li>
+                        <li>Flights departing from Johannesburg</li>
+                        <li>Breakfast and dinner included</li>
+                    </ul>
+
+                    <div class="pilgrimage-summary-footer">
+                        <div class="pilgrimage-summary-price">
+                            <span>Estimated price</span>
+                            <strong>BWP 32,396</strong>
+                            <small>Deposit: BWP 6,800</small>
+                        </div>
+
+                        <button
+                            class="pilgrimage-details-button"
+                            type="button"
+                            onclick="scrollToPackage('rwanda-package')"
+                        >
+                            View details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Southern Cross pilgrimage card -->
+            <article class="pilgrimage-summary-card">
+                <div class="pilgrimage-summary-image">
+                    <img
+                        src="images/The Colosseum.jpg"
+                        alt="The Colosseum in Rome"
+                        loading="lazy"
+                    >
+
+                    <span class="pilgrimage-card-badge">
+                        Italy, Bosnia and Croatia
+                    </span>
+                </div>
+
+                <div class="pilgrimage-summary-content">
+                    <p class="pilgrimage-destination">
+                        Rome, Assisi, Loreto, Medjugorje and Dubrovnik
+                    </p>
+
+                    <h3>Southern Cross Pilgrimage</h3>
+
+                    <p class="pilgrimage-dates">
+                        12 - 21 October 2026
+                    </p>
+
+                    <p class="pilgrimage-summary-description">
+                        Experience St Peter's Basilica, Assisi, Loreto,
+                        Medjugorje, Mostar and the historic city of
+                        Dubrovnik.
+                    </p>
+
+                    <ul class="pilgrimage-summary-highlights">
+                        <li>10-day pilgrimage journey</li>
+                        <li>Led by Bishop Noel Rucastle</li>
+                        <li>3 and 4-star accommodation</li>
+                        <li>Breakfast and dinner included</li>
+                    </ul>
+
+                    <div class="pilgrimage-summary-footer">
+                        <div class="pilgrimage-summary-price">
+                            <span>Estimated price</span>
+                            <strong>BWP 61,531</strong>
+                            <small>Deposit: BWP 10,900</small>
+                        </div>
+
+                        <button
+                            class="pilgrimage-details-button"
+                            type="button"
+                            onclick="scrollToPackage('italy-package')"
+                        >
+                            View details
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<!-- =========================================
+     FULL PILGRIMAGE DETAILS
+========================================== -->
 <section class="packages container">
-<h2 class="section-title">Featured Pilgrimage Packages</h2>
+<h2 class="section-title">Full Pilgrimage Details</h2>
 <!-- RWANDA -->
 <div class="package-card" id="rwanda-package">
 <div class="package-header">
@@ -577,6 +249,31 @@ of Our Lady's first apparition at Kibeho.
 </p>
 </div>
 </div>
+<div class="package-gallery" aria-labelledby="rwanda-gallery-title">
+<h3 id="rwanda-gallery-title">Pilgrimage Gallery</h3>
+<div class="gallery-grid">
+<figure class="gallery-item">
+<img src="images/Sanctuary of Our Lady of Kibeho.jpg" alt="Pilgrims gathered outside the Sanctuary of Our Lady of Kibeho" loading="lazy">
+<figcaption>Kibeho</figcaption>
+</figure>
+<figure class="gallery-item">
+<img src="images/Munyonyo Martyrs Shrine image.jpg" alt="Munyonyo Martyrs Shrine in Uganda" loading="lazy">
+<figcaption>Munyonyo</figcaption>
+</figure>
+<figure class="gallery-item">
+<img src="images/Praying at Namugongo Martyrs Shrine imae.jpg" alt="A pilgrim praying inside Namugongo Martyrs Shrine" loading="lazy">
+<figcaption>Namugongo</figcaption>
+</figure>
+<figure class="gallery-item">
+<img src="images/Rubaga Cathedral.png" alt="Front facade and twin towers of Rubaga Cathedral" loading="lazy">
+<figcaption>Rubaga Cathedral</figcaption>
+</figure>
+<figure class="gallery-item">
+<img src="images/St Matia Mulumba church.jpg" alt="Entrance to St Matia Mulumba Church" loading="lazy">
+<figcaption>St Matia Mulumba Church</figcaption>
+</figure>
+</div>
+</div>
 <div class="accordion">
 <div class="accordion-item">
 <button aria-expanded="false" class="accordion-btn" type="button">Inclusions</button>
@@ -606,7 +303,7 @@ of Our Lady's first apparition at Kibeho.
 <div class="booking-box"><h3>Request Booking Information</h3><div class="booking-notice"><strong>Payment setup in progress:</strong><br/>This package requires a booking deposit of <strong>BWP 6,800</strong>. Online DPO Pay checkout will be activated after merchant approval. Submitting this form does not reserve a seat or process a payment.</div><form class="booking-form" data-amount="6800" data-package="Faith of Africa Pilgrimage"><div class="form-group"><label for="rwanda-name">Full Name</label><input autocomplete="name" class="form-control" id="rwanda-name" name="fullName" required="" type="text"/></div><div class="form-group"><label for="rwanda-email">Email Address</label><input autocomplete="email" class="form-control" id="rwanda-email" name="email" required="" type="email"/></div><div class="form-group"><label for="rwanda-phone">Phone Number</label><input autocomplete="tel" class="form-control" id="rwanda-phone" name="phone" required="" type="tel"/></div><div class="form-group"><label for="rwanda-message">Message or Special Requirements (Optional)</label><textarea class="form-control" id="rwanda-message" name="message" placeholder="Add any questions, room requirements or travel notes." rows="4"></textarea></div><button class="pay-btn" type="submit">Prepare Booking Enquiry</button><div aria-live="polite" class="success-box" role="status"></div></form><p class="privacy-note">Please do not send passport copies through this form. Passport documents will only be requested after availability and secure document-handling instructions are confirmed.</p></div>
 </div>
 <!-- ITALY -->
-</div><div class="package-card" id="italy-package">
+<div class="package-card" id="italy-package">
 <div class="package-header">
 <h2>Southern Cross Pilgrimage (Medjugorje, Rome, Assisi, Loreto &amp; Dubrovnik)</h2>
 <p>12 to 21 October 2026 | Led by Bishop Noel Rucastle</p>
@@ -680,6 +377,35 @@ old city walls known throughout the world.
 </p>
 </div>
 </div>
+<div class="package-gallery" aria-labelledby="southern-cross-gallery-title">
+<h3 id="southern-cross-gallery-title">Pilgrimage Gallery</h3>
+<div class="gallery-grid">
+<figure class="gallery-item">
+<img src="images/St Peter’s Basilica in the Vatican.jpg" alt="St Peter's Basilica in Vatican City" loading="lazy">
+<figcaption>Rome</figcaption>
+</figure>
+<figure class="gallery-item">
+<img src="images/Basilica of St Francis in Assisi.jpg" alt="Basilica of St Francis in Assisi" loading="lazy">
+<figcaption>Assisi</figcaption>
+</figure>
+<figure class="gallery-item">
+<img src="images/The Sanctuary of the Holy House of Loreto.jpg" alt="Interior of the Sanctuary of the Holy House of Loreto" loading="lazy">
+<figcaption>Loreto</figcaption>
+</figure>
+<figure class="gallery-item">
+<img src="images/St James church in MedjugorjeSplit in Croatia.png" alt="St James Church in Medjugorje beside a statue of Mary" loading="lazy">
+<figcaption>Medjugorje</figcaption>
+</figure>
+<figure class="gallery-item">
+<img src="images/Stari Most bridge in Mostar.jpg" alt="Stari Most bridge spanning the river in Mostar" loading="lazy">
+<figcaption>Mostar</figcaption>
+</figure>
+<figure class="gallery-item">
+<img src="images/Cathedral of the Assumption in Dubrovnik.jpg" alt="Cathedral of the Assumption in Dubrovnik" loading="lazy">
+<figcaption>Dubrovnik</figcaption>
+</figure>
+</div>
+</div>
 <div class="accordion">
 <div class="accordion-item">
 <button aria-expanded="false" class="accordion-btn" type="button">Inclusions</button>
@@ -741,73 +467,6 @@ old city walls known throughout the world.
 </div>
 </section>
 <footer><div class="container"><p>© 2026 THE Travel Hub | Pilgrimage Specialists</p><p class="footer-note"><a href="#booking-terms">Booking information, payment status and privacy</a></p></div></footer>
-<script>
-/* Header shrink */
-const siteHeader = document.querySelector("header");
-function updateHeaderSize() {
-    siteHeader.classList.toggle("header-scrolled", window.scrollY > 60);
-}
-window.addEventListener("scroll", updateHeaderSize, { passive: true });
-updateHeaderSize();
-
-/* Smooth package navigation */
-function scrollToPackage(id) {
-    const destination = document.getElementById(id);
-    if (destination) destination.scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
-/* Accessible accordions */
-document.querySelectorAll(".accordion-btn").forEach(function (button) {
-    const content = button.nextElementSibling;
-    const panelId = "panel-" + Math.random().toString(36).slice(2, 9);
-    content.id = panelId;
-    button.setAttribute("aria-controls", panelId);
-    button.addEventListener("click", function () {
-        const isOpen = button.getAttribute("aria-expanded") === "true";
-        button.setAttribute("aria-expanded", String(!isOpen));
-        content.style.display = isOpen ? "none" : "block";
-    });
-});
-
-/* Booking enquiry: no payment and no document upload at this stage */
-document.querySelectorAll(".booking-form").forEach(function (form) {
-    form.addEventListener("submit", function (event) {
-        event.preventDefault();
-        if (!form.checkValidity()) {
-            form.reportValidity();
-            return;
-        }
-
-        const fullName = form.querySelector('[name="fullName"]').value.trim();
-        const email = form.querySelector('[name="email"]').value.trim();
-        const phone = form.querySelector('[name="phone"]').value.trim();
-        const message = form.querySelector('[name="message"]').value.trim();
-        const packageName = form.dataset.package;
-        const amount = Number(form.dataset.amount).toLocaleString("en-US");
-        const status = form.querySelector(".success-box");
-
-        const subject = "Booking enquiry: " + packageName;
-        const body = [
-            "Hello THE Travel Hub,",
-            "",
-            "I would like booking information for: " + packageName,
-            "Required deposit shown on website: BWP " + amount,
-            "",
-            "Full name: " + fullName,
-            "Email: " + email,
-            "Phone: " + phone,
-            "Message: " + (message || "None"),
-            "",
-            "Please confirm availability and send the official booking and payment instructions."
-        ].join("\n");
-
-        status.style.display = "block";
-        status.innerHTML = "<strong>Your enquiry is ready.</strong><br>Your email application will open. Review the message and press Send. No payment has been taken and no seat has been reserved yet.";
-
-        window.location.href = "mailto:thetravelhubbw@gmail.com?subject=" +
-            encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
-    });
-});
-</script>
+<script src="js/script.js"></script>
 </body>
 </html>
