@@ -16,9 +16,17 @@ function scrollToPackage(id) {
 /* Accessible accordions */
 document.querySelectorAll(".accordion-btn").forEach(function (button) {
     const content = button.nextElementSibling;
-    const panelId = "panel-" + Math.random().toString(36).slice(2, 9);
-    content.id = panelId;
-    button.setAttribute("aria-controls", panelId);
+    const panelId = button.getAttribute("aria-controls") || "panel-" + Array.from(document.querySelectorAll(".accordion-btn")).indexOf(button);
+
+    if (!content) {
+        return;
+    }
+
+    content.id = content.id || panelId;
+    button.setAttribute("aria-controls", content.id);
+    button.setAttribute("aria-expanded", "false");
+    content.style.display = "none";
+
     button.addEventListener("click", function () {
         const isOpen = button.getAttribute("aria-expanded") === "true";
         button.setAttribute("aria-expanded", String(!isOpen));
