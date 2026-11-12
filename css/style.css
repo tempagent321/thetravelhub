@@ -13,6 +13,14 @@
 .booking-notice strong{
     color:#3f310d;
 }   
+
+.payment-status{
+    margin:0 0 18px;
+    color:#5c4713;
+    font-size:0.92rem;
+    line-height:1.6;
+}
+
 :root{
     --primary:#00b2ca;
     --secondary:#2c3e50;

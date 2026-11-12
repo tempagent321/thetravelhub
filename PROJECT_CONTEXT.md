@@ -156,16 +156,29 @@ exactly.
 
 ## Payment status
 
-DPO payment integration has not been completed.
+The DPO Worker is in `cloudflare/worker.js`. The public website makes a
+read-only request to its `/health` endpoint to display availability; it does
+not create payment requests or expose credentials. DPO has provided production
+API and `payv3.php` checkout details. The latest service-type information
+identifies 114407 as Travel and Tourism, and the deployed Worker health check
+confirms that its service-type setting matches.
 
-The DPO account is still being finalized.
+The local Worker now uses the published package deposits (BWP 6,800 and
+BWP 10,900), the provided `payv3.php` checkout path, and service type 114407.
+Checkout and verification are explicitly disabled in code. The Worker allows
+CORS for the website's health check only; payment routes remain separately
+protected. The verification logic sends the CompanyRef to DPO and checks the
+returned reference, amount, and BWP currency before marking a transaction paid.
+The deployed Worker's read-only health check currently reports
+`status: disabled`, `paymentsEnabled: false`, configured CompanyToken/service
+type/test key, and a connected database. The live token's environment, public
+payment-request design, and DPO return/callback requirements still need review
+before checkout is enabled.
 
-Do not add fake payment processing.
-
-Do not place API keys, merchant credentials, passwords or private information
-inside index.html or js/script.js.
-
-Wait for official DPO integration information before implementing payments.
+Keep all DPO credentials in Cloudflare Worker secrets. Do not place API keys,
+merchant credentials, passwords or private information inside `index.html` or
+`js/script.js`. The public site's enquiry forms must continue to use their
+existing `mailto:` workflow until live payments are explicitly enabled.
 
 ## Important development rules
 

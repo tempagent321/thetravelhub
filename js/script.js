@@ -34,6 +34,57 @@ document.querySelectorAll(".accordion-btn").forEach(function (button) {
     });
 });
 
+/* Read-only connection check; checkout remains disabled on the page. */
+const paymentStatusUrl = "https://thetravelhub-dpo-api.tempagent321.workers.dev/health";
+document.querySelectorAll(".booking-box").forEach(function (box) {
+    const notice = box.querySelector(".booking-notice");
+    if (!notice) {
+        return;
+    }
+
+    const status = document.createElement("p");
+    status.className = "payment-status";
+    status.setAttribute("role", "status");
+    status.setAttribute("aria-live", "polite");
+    status.textContent = "Checking payment service availability...";
+    notice.insertAdjacentElement("afterend", status);
+});
+
+const paymentStatusMessages = document.querySelectorAll(".payment-status");
+
+async function updatePaymentStatus() {
+    if (window.location.protocol === "file:") {
+        paymentStatusMessages.forEach(function (element) {
+            element.textContent = "Open this page with Live Server to check the payment service. Online checkout remains unavailable.";
+        });
+        return;
+    }
+
+    try {
+        const response = await fetch(paymentStatusUrl, {
+            method: "GET",
+            mode: "cors",
+            credentials: "omit",
+            cache: "no-store"
+        });
+        const health = await response.json();
+        const message = health.paymentsEnabled === true && health.status === "ready"
+            ? "The payment service is reachable, but online checkout is still disabled on this website."
+            : "Online payments are not active. Please use the booking enquiry form.";
+
+        paymentStatusMessages.forEach(function (element) {
+            element.textContent = message;
+        });
+    } catch (error) {
+        console.error("Could not check the DPO payment service status", error);
+        paymentStatusMessages.forEach(function (element) {
+            element.textContent = "Payment availability could not be checked. Online checkout remains unavailable; please use the booking enquiry form.";
+        });
+    }
+}
+
+updatePaymentStatus();
+
 /* Booking enquiry: no payment and no document upload at this stage */
 document.querySelectorAll(".booking-form").forEach(function (form) {
     form.addEventListener("submit", function (event) {
