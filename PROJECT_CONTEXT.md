@@ -28,14 +28,14 @@ The website uses:
 - CSS3
 - Vanilla JavaScript
 
-The website does not currently use:
+The public website is static. DPO payment requests are handled by a separate
+Cloudflare Worker, with Cloudflare D1 used to record payment attempts and
+rate-limit public requests. The site does not use:
 
 - React
 - Vue
 - Angular
 - Node.js
-- A database
-- A server-side application
 
 ## Project structure
 
@@ -157,23 +157,28 @@ exactly.
 ## Payment status
 
 The DPO Worker is in `cloudflare/worker.js`. The public website makes a
-read-only request to its `/health` endpoint to display availability; it does
-not create payment requests or expose credentials. DPO has provided production
-API and `payv3.php` checkout details. The latest service-type information
-identifies 114407 as Travel and Tourism, and the deployed Worker health check
-confirms that its service-type setting matches.
+read-only request to its `/health` endpoint and only shows the DPO checkout
+button if the Worker reports payments enabled and ready. Checkout remains
+disabled by default. DPO provided production API and `payv3.php` checkout
+details and service type 114407 (Travel and Tourism); the deployed Worker
+confirmed that service-type setting.
 
 The local Worker now uses the published package deposits (BWP 6,800 and
 BWP 10,900), the provided `payv3.php` checkout path, and service type 114407.
-Checkout and verification are explicitly disabled in code. The Worker allows
-CORS for the website's health check only; payment routes remain separately
-protected. The verification logic sends the CompanyRef to DPO and checks the
-returned reference, amount, and BWP currency before marking a transaction paid.
-The deployed Worker's read-only health check currently reports
-`status: disabled`, `paymentsEnabled: false`, configured CompanyToken/service
-type/test key, and a connected database. The live token's environment, public
-payment-request design, and DPO return/callback requirements still need review
-before checkout is enabled.
+Checkout remains explicitly disabled in code. The Worker implementation now
+includes fixed-price token creation with DPO RedirectURL/BackURL, a static
+customer return page that calls server-side verification, a pushPayments
+callback that independently verifies token, amount, currency, and fraud result,
+and D1-backed request throttling. Apply
+`cloudflare/migrations/0001_payment_rate_limits.sql` to the payment D1 database
+before enabling checkout. Register this callback with DPO:
+`https://thetravelhub-dpo-api.tempagent321.workers.dev/api/payments/callback`.
+
+The public checkout routes enforce allowed browser origins, package IDs and a
+per-IP attempt limit; they never accept a browser-supplied amount or expose
+credentials. The live token's environment, DPO callback registration, and the
+live end-to-end test DPO requires still need confirmation. The deployed Worker
+must be updated with this local implementation before any live testing.
 
 Keep all DPO credentials in Cloudflare Worker secrets. Do not place API keys,
 merchant credentials, passwords or private information inside `index.html` or
@@ -197,18 +202,9 @@ existing `mailto:` workflow until live payments are explicitly enabled.
 
 ## Immediate next task
 
-The next task is to inspect the current uncommitted Phase 3 work.
-
-Copilot must:
-
-1. Read index.html.
-2. Read css/style.css.
-3. Read js/script.js.
-4. List the actual filenames inside images.
-5. Inspect git status.
-6. Inspect git diff.
-7. Check whether the featured pilgrimage cards were added correctly.
-8. Check whether the image paths are correct.
-9. Check whether the card buttons work.
-10. Correct errors without deleting existing package details.
-11. Avoid committing or pushing until permission is given.
+Review the local DPO implementation, then deploy the Worker with payments
+disabled and apply its D1 migration. Confirm the health endpoint reports the
+database and rate-limit table ready before publishing the static return page
+and website updates. DPO must register the callback and arrange its required
+controlled live test before checkout is enabled. Never deploy, publish,
+commit, or push without the owner's approval.

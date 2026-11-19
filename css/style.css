@@ -21,6 +21,27 @@
     line-height:1.6;
 }
 
+.payment-return{
+    max-width:42rem;
+    margin:clamp(3rem,10vh,7rem) auto;
+    padding:clamp(1.5rem,5vw,3rem);
+    background:var(--white);
+    border-radius:12px;
+    box-shadow:var(--shadow);
+}
+
+.payment-return h1,
+.payment-return p{
+    margin-bottom:1rem;
+}
+
+.payment-return a{
+    display:inline-block;
+    margin-top:.5rem;
+    color:var(--navy);
+    font-weight:700;
+}
+
 :root{
     --primary:#00b2ca;
     --secondary:#2c3e50;
